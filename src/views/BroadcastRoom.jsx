@@ -3,10 +3,13 @@ import socketIOClient from 'socket.io-client'
 import Hero from '../components/Hero'
 import Content from '../components/Content'
 import SCRCarousel from '../components/Carousel/Carousel'
+import { observer } from 'mobx-react'
 import axios from 'axios'
 const ENDPOINT = 'http://0ed93a492609.ngrok.io'
 const ID = 321;
-const Homepage = () => {
+
+
+const Homepage = observer(() => {
   const [response, setResponse] = useState('')
 
 
@@ -29,6 +32,6 @@ const Homepage = () => {
 
 
   return <Fragment>Socket response: {response}</Fragment>
-}
+})
 
 export default Homepage
