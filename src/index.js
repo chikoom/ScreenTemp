@@ -2,10 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
+import { Provider } from 'mobx-react'
 import * as serviceWorker from "./serviceWorker";
 import { Auth0Provider } from "@auth0/auth0-react";
 import config from "./auth_config.json";
 import history from "./utils/history";
+import { Events } from './stores/Events'
+import { Show } from './stores/Show'
+import { User } from './stores/User'
+// import { Creators } from './stores/Creators'
 
 const onRedirectCallback = (appState) => {
   history.push(
@@ -15,6 +20,11 @@ const onRedirectCallback = (appState) => {
   );
 };
 
+const eventsStores = new Events()
+const showStore = new Show()
+const userStore = new User()
+// const creatorStore = new Creators()
+const stores =  {eventsStores , showStore , userStore }
 ReactDOM.render(
   <Auth0Provider
     domain={config.domain}
@@ -23,7 +33,7 @@ ReactDOM.render(
     redirectUri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
   >
-    <App />
+    <Provider {...stores}><App /></Provider>
   </Auth0Provider>,
   document.getElementById("root")
 );

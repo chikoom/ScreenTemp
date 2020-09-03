@@ -6,6 +6,7 @@ import SCRCarousel from '../components/Carousel/Carousel'
 import { observer } from 'mobx-react'
 import axios from 'axios'
 const ENDPOINT = 'http://0ed93a492609.ngrok.io'
+const ENDPOINT2 = "https://c3671c6ed694.ngrok.io"
 const ID = 321;
 
 
@@ -26,7 +27,7 @@ const Homepage = observer(() => {
         console.log(response.data.error)
       }
     }
-    getData()
+    // getData()
     // socket.emit("toAPI" , )
   }, [])
 
