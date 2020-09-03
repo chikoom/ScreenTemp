@@ -35,7 +35,6 @@ const App = () => {
   return (
     <Router history={history}>
       <div id='app' className='d-flex flex-column h-100'>
-        <NavBar />
         <NavbarPage />
         <Route exact path='/homepage-test' render={() => <Homepage />} />
         <Route
@@ -48,6 +47,7 @@ const App = () => {
             <Route path='/' exact component={Home} />
             <Route path='/profile' component={Profile} />
             <Route path='/external-api' component={ExternalApi} />
+            <Route path='/event/:id' component={ExternalApi} />
           </Switch>
         </Container>
         <Footer />
